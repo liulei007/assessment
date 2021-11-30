@@ -47,7 +47,7 @@ To deplete helm deployment
 
 ** Go to settings, secrets on github, then create AWS_ACCESS_KEY_ID and AWS_SECRET_ACCESS_KEY for the s3 access.
 
-** The yml file to run sync repository and S3 bucket can be find here.
+** The yml file to run github actions with sync helm repository and helm S3 repo bucket. Located as:
 
 """ .github/workflows/sync-s3.yml"""
 

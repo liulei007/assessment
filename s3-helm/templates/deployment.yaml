@@ -1,0 +1,43 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  creationTimestamp: null
+  labels:
+    app: {{ .Values.kname }}
+  name: {{ .Values.kname }}
+spec:
+  replicas: {{ .Values.replicaCount }}
+  selector:
+    matchLabels:
+      app: {{ .Values.kname }}
+  strategy: {}
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        app: {{ .Values.kname }}
+    spec:
+      containers:
+      - image: docker.io/leisworld/k8s-s3-infor
+        name: {{ .Values.kname }}
+        ports:
+         - containerPort: {{ .Values.portnumber }}
+        env:
+            - name: s3-url-configmap
+              valueFrom:
+                configMapKeyRef:
+                  name: s3-url-configmap
+                  key: s3-address
+            - name: s3-creds-access
+              valueFrom:
+                secretKeyRef:
+                  name: s3-creds
+                  key: aws_access_key_id1
+            - name: s3-creds-secret
+              valueFrom:
+                secretKeyRef:
+                  name: s3-creds
+                  key: aws_secret_access_key1
+        resources: {}
+
+status: {}

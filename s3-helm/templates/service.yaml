@@ -1,0 +1,18 @@
+apiVersion: v1
+kind: Service
+metadata:
+  creationTimestamp: null
+  labels:
+    app: {{ .Values.kname }}
+    app.kubernetes.io/managed-by: Helm
+  name: {{ .Values.kname }}
+spec:
+  ports:
+  - port: {{ .Values.portnumber }}
+    protocol: TCP
+    targetPort: {{ .Values.portnumber }}
+  selector:
+    app: {{ .Values.kname }}
+  type: LoadBalancer
+status:
+  loadBalancer: {}

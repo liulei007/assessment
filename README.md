@@ -30,17 +30,24 @@ To build with Dockerfile
 
 ** docker login
 
-** docker build -t k8s-s3-inf .
+** docker build -t k8s-s3-infor .
 
-** docker tag k8s-s3-inf leisworld/k8s-s3-inf
+** docker tag k8s-s3-infor leisworld/k8s-s3-infor
 
 ** docker push leisworld/k8s-s3-inf
 
-Modify your helm file with docker's image url and use helm to deploy app.
+Modify your helm file with docker's image url and use helm to deploy app. run follow command to install helm
+"""helm install s3-info assessment/s3-helm/"""
 
+To deplete helm deployment
 
-To deplete deployment
-** kubectl delete svc s3-info 
-** kubectl delete deployment s3-info-app
+"""helm delete s3-info"""
 
 ## 3.  Set up GitHub action with auto-upload helm package when triggered.
+
+** Go to settings, secrets on github, then create AWS_ACCESS_KEY_ID and AWS_SECRET_ACCESS_KEY for the s3 access.
+
+** The yml file to run sync repository and S3 bucket can be find here.
+
+""" .github/workflows/sync-s3.yml"""
+

@@ -1,0 +1,4 @@
+replicaCount: 2
+portnumber: 5000
+kname: s3-infor
+imageuri: docker.io/leisworld/k8s-s3-infor

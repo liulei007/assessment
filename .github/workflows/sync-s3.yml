@@ -21,7 +21,7 @@ jobs:
     # - name: Configure AWS Credentials
     #   uses: aws-actions/configure-aws-credentials@v1
     - neme: check current dir
-      run: ls -al
+      run: ls
     - name: compress helm chart
       run: tar -cvzf ./assessment/s3-helm.tgz ./assessment/s3-helm/
     - name: Deploy static site to S3 bucket

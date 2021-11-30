@@ -1,12 +1,15 @@
-# assessment
+## assessment
 helm-s3-and-k8s
 
 
-# This instructurion is to build helm repository on S3, list s3 contents on http web browser
+## This instructurion is to build helm repository on S3, list s3 contents on http web browser
 
 *pre-requirements to set up an environment:
+
   . terraform version 1.0 and above
+  
   . docker engine and Kubernetes environment(minikube), helm 
+  
   . python, flask, and pip
 
 ##  1.  Set up S3 with Terraform, and initial as helm repository

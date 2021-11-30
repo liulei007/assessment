@@ -22,6 +22,20 @@ spec:
         name: {{ .Values.kname }}
         ports:
          - containerPort: {{ .Values.portnumber }}
+        livenessProbe:
+            httpGet:
+             path: /
+             port: 5000
+            failureThreshold: 1
+            periodSeconds: 1
+            initialDelaySeconds: 1
+        readinessProbe:
+            httpGet:
+             path: /
+             port: 5000
+            failureThreshold: 1
+            periodSeconds: 1
+            initialDelaySeconds: 1
         env:
             - name: s3-url-configmap
               valueFrom:
@@ -38,6 +52,7 @@ spec:
                 secretKeyRef:
                   name: s3-creds
                   key: aws_secret_access_key1
+
         resources: {}
 
 status: {}

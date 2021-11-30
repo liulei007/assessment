@@ -18,8 +18,8 @@ jobs:
     - name: Checkout
       uses: actions/checkout@v2
 
-    - name: Configure AWS Credentials
-      uses: aws-actions/configure-aws-credentials@v1
+    # - name: Configure AWS Credentials
+    #   uses: aws-actions/configure-aws-credentials@v1
     - name: compress helm chart
       run: tar -cvzf ./assessment/s3-helm.tgz ./assessment/s3-helm/
     - name: Deploy static site to S3 bucket

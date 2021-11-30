@@ -5,22 +5,23 @@ on:
     branches:
     - main
 
+env:
+  AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+  AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+  AWS_DEFAULT_REGION: 'us-east-1'
+
+
 jobs:
   deploy:
     runs-on: ubuntu-latest
     steps:
     - name: Checkout
-      uses: actions/checkout@v1
+      uses: actions/checkout@v2
 
     - name: Configure AWS Credentials
       uses: aws-actions/configure-aws-credentials@v1
-      env:
-          aws_s3_bucket: ${{ secrets.AWS_S3_BUCKET }}
-          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
-          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-          aws-region: 'us-east-1'   # optional: defaults to us-east-1
+    - name: compress helm chart
+      run: tar -cvzf ./assessment/s3-helm.tgz ./assessment/s3-helm/
     - name: Deploy static site to S3 bucket
-      run: |
-          tar -cvzf ./assessment/s3-helm.tgz ./assessment/s3-helm/
-          aws s3 sync ./assessment/s3-helm.tgz s3://aws_s3_bucket/charts/         
-                                                
+      run: aws s3 sync ./assessment/s3-helm.tgz s3://${{ secrets.AWS_S3_BUCKET_NAME }}       
+

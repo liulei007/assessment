@@ -23,6 +23,6 @@ jobs:
     - name: check current dir
       run: ls -al; pwd
     - name: compress helm chart
-      run: tar -cvzf ./s3-helm.tgz ./s3-helm/ | aws s3 sync ../s3-helm.tgz s3://${{ secrets.AWS_S3_BUCKET}}/charts/
+      run: tar -cvzf ./s3-helm.tgz ./s3-helm/ | aws s3 sync /home/runner/work/assessment/assessment/s3-helm.tgz s3://${{ secrets.AWS_S3_BUCKET}}/charts/
     # - name: Deploy static site to S3 bucket
     #   run: aws s3 sync ./s3-helm.tgz s3://${{ secrets.AWS_S3_BUCKET}}/charts/

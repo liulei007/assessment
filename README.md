@@ -23,11 +23,21 @@ terraform appply
  .  The deployment use Kubernetes  """configmap""" ,and """secret"""  to hide sensitive information such as URL, and accesskey pair.
 .  Use helm chart as package management. 
 
-**to build with Dockerfile
-**docker build -t myapp .
-**docker tag mysql /leisworld/
+To build with Dockerfile
+
+** docker login
+
+** docker build -t k8s-s3-inf .
+
+** docker tag k8s-s3-inf leisworld/k8s-s3-inf
+
+** docker push leisworld/k8s-s3-inf
 
 Modify your helm file with docker's image url and use helm to deploy app.
 
+
+To deplete deployment
+** kubectl delete svc s3-info 
+** kubectl delete deployment s3-info-app
 
 ## 3.  Set up GitHub action with auto-upload helm package when triggered.

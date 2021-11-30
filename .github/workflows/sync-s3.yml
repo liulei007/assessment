@@ -6,11 +6,4 @@ on:
     steps:
     - uses: actions/checkout@v2
     - name: s3 configs
-        env:
-          AWS_S3_BUCKET: ${{ secrets.AWS_S3_BUCKET }}
-          AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
-          AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-          AWS_REGION: 'us-east-1'   # optional: defaults to us-east-1
-    - run: |
-        tar -cvzf ./assessment/s3-helm.tgz ./assessment/s3-helm/
-         aws s3 sync ./*.tgz s3://AWS_S3_BUCKET/charts/
+    - run: echo "jo"

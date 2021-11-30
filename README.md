@@ -10,7 +10,7 @@ helm-s3-and-k8s
   . python, flask, and pip
 
 ##  1.  Set up S3 with Terraform, and initial as helm repository
-      Terraform will build s3 bucket and grant access for this user account, also will initialize the helm repository by uploading the index.html into the S3 bucket.
+. Terraform will build s3 bucket and grant access for this user account, also will initialize the helm repository by uploading the index.html into the S3 bucket.
 Use follow commands to initialize and apply terraform to build s3.
 ```shell
 terraform init
